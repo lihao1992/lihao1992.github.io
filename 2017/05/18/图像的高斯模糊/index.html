@@ -90,20 +90,23 @@
 
 
 
-<meta name="description" content="Visual Odometry ​    Today, let’s talk about a new topic named visual odometry. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my researc">
+<meta name="description" content="OpenCV 实现图像的高斯模糊​    最近在做CNN的东西，想着对之前图像的知识做一下回顾，看看能不能有什么intuitive的idea出来，这次就先来回顾一下高斯模糊，听着很玄的高斯模糊，in the other hand,  其实可以用来拍照的时候做一些小的效果出来，俗称 “滤镜” 。下面就先来说一下 Gussian Blur :">
 <meta name="keywords" content="Computer Vision">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Visual Odometry">
-<meta property="og:url" content="http://yoursite.com/2017/05/14/Visual-Odometry/index.html">
+<meta property="og:title" content="图像的高斯模糊">
+<meta property="og:url" content="http://yoursite.com/2017/05/18/图像的高斯模糊/index.html">
 <meta property="og:site_name" content="Stvilla">
-<meta property="og:description" content="Visual Odometry ​    Today, let’s talk about a new topic named visual odometry. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my researc">
-<meta property="og:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure1.png">
-<meta property="og:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure2.png">
-<meta property="og:updated_time" content="2017-05-14T07:56:02.085Z">
+<meta property="og:description" content="OpenCV 实现图像的高斯模糊​    最近在做CNN的东西，想着对之前图像的知识做一下回顾，看看能不能有什么intuitive的idea出来，这次就先来回顾一下高斯模糊，听着很玄的高斯模糊，in the other hand,  其实可以用来拍照的时候做一些小的效果出来，俗称 “滤镜” 。下面就先来说一下 Gussian Blur :">
+<meta property="og:image" content="http://oq5dgajcx.bkt.clouddn.com/bg2012111403.png">
+<meta property="og:image" content="http://oq5dgajcx.bkt.clouddn.com/bg2012111404.png">
+<meta property="og:image" content="http://oq5dgajcx.bkt.clouddn.com/bg2012111405.jpg">
+<meta property="og:image" content="http://oq5dgajcx.bkt.clouddn.com/street-view.jpg">
+<meta property="og:image" content="http://oq5dgajcx.bkt.clouddn.com/New_5_1.5_street-view.jpg">
+<meta property="og:updated_time" content="2017-05-18T13:06:42.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Visual Odometry">
-<meta name="twitter:description" content="Visual Odometry ​    Today, let’s talk about a new topic named visual odometry. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my researc">
-<meta name="twitter:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure1.png">
+<meta name="twitter:title" content="图像的高斯模糊">
+<meta name="twitter:description" content="OpenCV 实现图像的高斯模糊​    最近在做CNN的东西，想着对之前图像的知识做一下回顾，看看能不能有什么intuitive的idea出来，这次就先来回顾一下高斯模糊，听着很玄的高斯模糊，in the other hand,  其实可以用来拍照的时候做一些小的效果出来，俗称 “滤镜” 。下面就先来说一下 Gussian Blur :">
+<meta name="twitter:image" content="http://oq5dgajcx.bkt.clouddn.com/bg2012111403.png">
 
 
 
@@ -131,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/14/Visual-Odometry/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/18/图像的高斯模糊/"/>
 
 
 
 
 
-  <title>Visual Odometry | Stvilla</title>
+  <title>图像的高斯模糊 | Stvilla</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -267,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/14/Visual-Odometry/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/图像的高斯模糊/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LIHAO">
@@ -284,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Visual Odometry</h1>
+          <h1 class="post-title" itemprop="name headline">图像的高斯模糊</h1>
         
 
         <div class="post-meta">
@@ -296,8 +299,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-14T15:49:10+08:00">
-                2017-05-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-18T21:01:13+08:00">
+                2017-05-18
               </time>
             
 
@@ -331,32 +334,33 @@
       
 
       
-        <h2 id="Visual-Odometry"><a href="#Visual-Odometry" class="headerlink" title="Visual Odometry"></a>Visual Odometry</h2><hr>
-<p>​    Today, let’s talk about a new topic named <strong><em>visual odometry</em></strong>. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my research is focusing on pose estimation and augemented reality, i found there are a lot of same contents connect my research with visual odometry , so i think i should give a eye to this field. After a few weeks, i fall in love with visual odometry, it’s very interesting .Moreover, there are so many works in this field, i’m so happy that i am working on it !</p>
+        <h1 id="OpenCV-实现图像的高斯模糊"><a href="#OpenCV-实现图像的高斯模糊" class="headerlink" title="OpenCV 实现图像的高斯模糊"></a>OpenCV 实现图像的高斯模糊</h1><p>​    最近在做CNN的东西，想着对之前图像的知识做一下回顾，看看能不能有什么intuitive的idea出来，这次就先来回顾一下高斯模糊，听着很玄的高斯模糊，in the other hand,  其实可以用来拍照的时候做一些小的效果出来，俗称 “滤镜” 。下面就先来说一下 Gussian Blur :</p>
 <a id="more"></a>
-<h5 id="What-is-visual-odometry"><a href="#What-is-visual-odometry" class="headerlink" title="What is visual odometry  ?"></a>What is visual odometry  ?</h5><p>​    Visual Odometry is the process of estimating pose of the moving object, like MAVs, Robot, Self-driving car etc. In this approach we have a camera (or many cameras) rigidly attached to a moving object, and our aim is to compute a 6-DOF trajectory using the video stream coming from this camera. When i have only one camera, this method is called <strong><em>Monocular Visual Odometry</em></strong>.      </p>
-<h5 id="Why-visual-odometry"><a href="#Why-visual-odometry" class="headerlink" title="Why visual odometry ?"></a>Why visual odometry ?</h5><p>​    There are more than one ways to determine the trajectory of a moving robot, like wheel odometry, but visual odometry has more accurate trajectory estimates compared to wheel odometry. Therefore, VO can be used as a complement to other methods (GPS, IMU, Laser Odometry). But in monocular vo, we can only estimate the trajectory , unique only up to a scale factor, so you can say that you moved one unit in X, two units in Y. However, it can be addressed by Stereo Visual Odometry. REMEMBER, this post will still concentrate on Mono-VO.</p>
-<h5 id="Visual-Odometry-Pipeline"><a href="#Visual-Odometry-Pipeline" class="headerlink" title="Visual Odometry Pipeline"></a>Visual Odometry Pipeline</h5><p>​    First of all, i’ll briefly describe a complete pipeline to establish a visual odometry here. Here is the pipeline :</p>
 <ol>
-<li>Capture images from video or cam : $I^t$, $I^{t+1}$;</li>
-<li>Undistort the above imges (optional);</li>
-<li>Use feature detection algorithm to detect features in $I^t$;</li>
-<li>Track and match those features to $I^{t+1}$, if matched features drop below a certain threshold, tracking is failed, Reset !</li>
-<li>Motion estimation. Basically use five-point algorithm with RANSAC to compute the essiential matrix, then to estimate Pose ( R, t ) from the essential matrix</li>
-<li>Local optimization to refine pose. </li>
+<li><p>高斯模糊</p>
+<p>高斯模糊本质上是低通滤波器，输出图像的每个像素点是原图像上对应像素点与周围像素点的加权和，原理并不复杂。做久了卷积神经网络看这个分外亲切，就是用高斯分布权值矩阵与原始图像矩阵做卷积运算而已。摘录wiki上两段原文：</p>
+<p>Mathematically, applying a Gaussian blur to an image is the same as convolving the image with a Gaussian function.</p>
+<p>从数学上讲，对图像做高斯模糊，其实就是将图像与高斯函数做卷积。</p>
+<p>Since the Fourier transform of a Gaussian is another Gaussian, applying a Gaussian blur has the effect of reducing the image’s high-frequency components; a Gaussian blur is thus a low pass filter.</p>
+<p>因为高斯分布的傅里叶变换还是一个高斯分布，所以所以使用高斯模糊能够减少图像的高频分量，因此高斯模糊就是一个低通滤波器。</p>
+<p>所谓”模糊”，可以理解成每一个像素都取周边像素的平均值，</p>
+<p><img src="http://oq5dgajcx.bkt.clouddn.com/bg2012111403.png" alt="http://oq5dgajcx.bkt.clouddn.com/bg2012111403.png"></p>
+<p>比如上图中的，2是中间点，周围点是1。</p>
+<p><img src="http://oq5dgajcx.bkt.clouddn.com/bg2012111404.png" alt="在数值上，这是一种&quot;平滑化&quot;。在图形上，就相当于产生&quot;模糊&quot;效果，&quot;中间点&quot;失去细节。http://oq5dgajcx.bkt.clouddn.com/bg2012111404.png"></p>
+<p>取平均值的话，在数值上，这是一种”平滑化”。在图形上，就相当于产生”模糊”效果，”中间点”失去细节。效果图大概就是这个样子，</p>
+<p><img src="http://oq5dgajcx.bkt.clouddn.com/bg2012111405.jpg" alt="http://oq5dgajcx.bkt.clouddn.com/bg2012111405.jpg"></p>
+<p>高斯模糊大概就是这个样子了。下面说一下代码实现。</p>
+</li>
+<li><p>代码（Python + Opencv）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">imgName = <span class="string">"street-view.jpg"</span></div><div class="line">kernel_size = (<span class="number">5</span>, <span class="number">5</span>)	<span class="comment"># kernel的大小可以自定义</span></div><div class="line">sigma = <span class="number">1.5</span>		<span class="comment"># sigma 同样可以自定义</span></div><div class="line"></div><div class="line">img = cv2.imread(imgName)</div><div class="line">img = cv2.resize(img, (<span class="number">640</span>, <span class="number">480</span>))</div><div class="line">img_new = cv2.GaussianBlur(img, kernel_size, sigma)</div><div class="line">new_imgName = <span class="string">"New_"</span> + str(kernel_size[<span class="number">0</span>]) + <span class="string">"_"</span> + str(sigma) + <span class="string">"_"</span> + imgName</div><div class="line">cv2.imwrite(new_imgName, img_new)</div><div class="line"></div><div class="line">cv2.imshow(imgName, img)</div><div class="line">cv2.imshow(new_imgName, img_new)</div><div class="line"></div><div class="line">cv2.waitKey(<span class="number">0</span>)</div></pre></td></tr></table></figure>
+<p>这里(5, 5)表示高斯矩阵的长与宽都是5，标准差取0时OpenCV会根据高斯矩阵的尺寸自己计算。概括地讲，高斯矩阵的尺寸越大，标准差越大，处理过的图像模糊程度越大。</p>
+<p>我们看一下原图：</p>
+<p><img src="http://oq5dgajcx.bkt.clouddn.com/street-view.jpg" alt="http://oq5dgajcx.bkt.clouddn.com/street-view.jpg"></p>
+<p>模糊后，</p>
+<p><img src="http://oq5dgajcx.bkt.clouddn.com/New_5_1.5_street-view.jpg" alt="http://oq5dgajcx.bkt.clouddn.com/New_5_1.5_street-view.jpg"></p>
+<p>这里我做了一下图像的resize，所以大小可能有一些变化。我们可以看到处理后的图像更加平滑，这就是高斯模糊的基本效果。</p>
+</li>
 </ol>
-<p>You can also see the following chart to briefly describe the pipeline in Figure 1.</p>
-<hr>
-<p><img src="/home/stvilla/图片/Typora_Images/Figure1.png" alt="Figure1"></p>
-<p>​                                            Figure 1</p>
-<h5 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h5><p>​    According to Step 1, we take some consecutive images (or video) as our input to system. In case of a Monocular version, the set of images at discrete times k is denoted by<br>$$<br>I<em>{0:n} = {I</em>{0},…,I<em>{n}} \tag{1}<br>$$<br>Then, two camera positions at adjacent time k-1 and k are related by a transform matrix :<br>$$<br>T</em>{k} = \left[\begin{matrix}R<em>{k,k-1} &amp; t</em>{k,k-1} \ 0 &amp; 1\end{matrix}\right] \tag{2}<br>$$<br>Finally, we can get the set of camera poses $P<em>{0:n} = {P</em>{0},…,P_{n}}$ contains whole transformations of camera w.r.t. the initial coordinate frame at k=0, according to previous step 2.</p>
-<p>In all, the <strong><em>main task</em></strong> in Visual Odometry is to compute the relative transformations $T<em>{k}$ from images $I</em>{k}$ and $I<em>{k-1}$, then to recover full trajectory $P</em>{0:n}$ for camera by $T_{k}$.</p>
-<h5 id="Camera-Modeling-and-Calibration"><a href="#Camera-Modeling-and-Calibration" class="headerlink" title="Camera Modeling and Calibration"></a>Camera Modeling and Calibration</h5><p>​    This section is always based on another research field named Structure from Motion, a traditional approach to 3D Reconstruction. 未完待续…</p>
-<h5 id="Motion-Estimation-Pose"><a href="#Motion-Estimation-Pose" class="headerlink" title="Motion Estimation (Pose)"></a>Motion Estimation (Pose)</h5><p>​    This module is the key point and core computation step in a VO system. We will compute camera motion $T_{k}$ between the previous and current image according formula (2), then by concatenation of all these single movements, the full trajectory of the camera can be recovered. That is our aim ! Like Figure2 , </p>
-<p><img src="/home/stvilla/图片/Typora_Images/Figure2.png" alt="Figure2"></p>
-<p>​                                            Figure 2</p>
-<p>​    To compute camera motion, there are two method to recover relative motion $T_{k}$. <em>Appearance-based method</em> or <em>Feature-based method</em> . <strong>Appearance-based</strong> method always use the intensity information of all pixels in the two input images, therefore we get more direct information from orignal image, this can reveal the relationship between two images in low level. However, it causes a more expensive computation. <strong>Feature-based</strong> method only use salient and visual features extracted (or tracked) across the imges, we must detect and match (track) same features between consecutive frames, then to compute relative poses.  </p>
-<p>​    Feature-based motion estimation must robustly detect large number of feature points, some traditional computer vision methods can address this problem, like SIFT, SURF, ORB, FAST, these can be implemented by OpenCV. We want to compute relative transformation between two frames, it is neccessary to match features in both images. There are three cases: 2D-to-2D, 3D-to-3D, 3D-to-2D. </p>
 
       
     </div>
@@ -399,8 +403,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/14/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/05/14/Visual-Odometry/" rel="next" title="Visual Odometry">
+                <i class="fa fa-chevron-left"></i> Visual Odometry
               </a>
             
           </div>
@@ -408,10 +412,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/18/图像的高斯模糊/" rel="prev" title="图像的高斯模糊">
-                图像的高斯模糊 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -531,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Visual-Odometry"><span class="nav-number">1.</span> <span class="nav-text">Visual Odometry</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-visual-odometry"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">What is visual odometry  ?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Why-visual-odometry"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Why visual odometry ?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Visual-Odometry-Pipeline"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Visual Odometry Pipeline</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Problem-Formulation"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">Problem Formulation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Camera-Modeling-and-Calibration"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">Camera Modeling and Calibration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Motion-Estimation-Pose"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">Motion Estimation (Pose)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-实现图像的高斯模糊"><span class="nav-number">1.</span> <span class="nav-text">OpenCV 实现图像的高斯模糊</span></a></li></ol></div>
             
 
           </div>
