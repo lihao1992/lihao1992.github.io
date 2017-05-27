@@ -97,13 +97,10 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/14/Visual-Odometry/index.html">
 <meta property="og:site_name" content="Stvilla">
 <meta property="og:description" content="Visual Odometry ​    Today, let’s talk about a new topic named visual odometry. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my researc">
-<meta property="og:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure1.png">
-<meta property="og:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure2.png">
-<meta property="og:updated_time" content="2017-05-14T07:56:02.085Z">
+<meta property="og:updated_time" content="2017-05-19T05:58:36.787Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Visual Odometry">
 <meta name="twitter:description" content="Visual Odometry ​    Today, let’s talk about a new topic named visual odometry. Visual Odometry is an important issue in computer vision , especially, in Automatic driving and SLAM. Because my researc">
-<meta name="twitter:image" content="http://yoursite.com/home/stvilla/图片/Typora_Images/Figure1.png">
 
 
 
@@ -338,25 +335,24 @@
 <h5 id="Why-visual-odometry"><a href="#Why-visual-odometry" class="headerlink" title="Why visual odometry ?"></a>Why visual odometry ?</h5><p>​    There are more than one ways to determine the trajectory of a moving robot, like wheel odometry, but visual odometry has more accurate trajectory estimates compared to wheel odometry. Therefore, VO can be used as a complement to other methods (GPS, IMU, Laser Odometry). But in monocular vo, we can only estimate the trajectory , unique only up to a scale factor, so you can say that you moved one unit in X, two units in Y. However, it can be addressed by Stereo Visual Odometry. REMEMBER, this post will still concentrate on Mono-VO.</p>
 <h5 id="Visual-Odometry-Pipeline"><a href="#Visual-Odometry-Pipeline" class="headerlink" title="Visual Odometry Pipeline"></a>Visual Odometry Pipeline</h5><p>​    First of all, i’ll briefly describe a complete pipeline to establish a visual odometry here. Here is the pipeline :</p>
 <ol>
-<li>Capture images from video or cam : $I^t$, $I^{t+1}$;</li>
+<li>Capture images from video or cam : $ I^t $, $ I^{t+1} $;</li>
 <li>Undistort the above imges (optional);</li>
-<li>Use feature detection algorithm to detect features in $I^t$;</li>
+<li>Use feature detection algorithm to detect features in $ I^t $;</li>
 <li>Track and match those features to $I^{t+1}$, if matched features drop below a certain threshold, tracking is failed, Reset !</li>
 <li>Motion estimation. Basically use five-point algorithm with RANSAC to compute the essiential matrix, then to estimate Pose ( R, t ) from the essential matrix</li>
 <li>Local optimization to refine pose. </li>
 </ol>
 <p>You can also see the following chart to briefly describe the pipeline in Figure 1.</p>
 <hr>
-<p><img src="/home/stvilla/图片/Typora_Images/Figure1.png" alt="Figure1"></p>
 <p>​                                            Figure 1</p>
 <h5 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h5><p>​    According to Step 1, we take some consecutive images (or video) as our input to system. In case of a Monocular version, the set of images at discrete times k is denoted by<br>$$<br>I<em>{0:n} = {I</em>{0},…,I<em>{n}} \tag{1}<br>$$<br>Then, two camera positions at adjacent time k-1 and k are related by a transform matrix :<br>$$<br>T</em>{k} = \left[\begin{matrix}R<em>{k,k-1} &amp; t</em>{k,k-1} \ 0 &amp; 1\end{matrix}\right] \tag{2}<br>$$<br>Finally, we can get the set of camera poses $P<em>{0:n} = {P</em>{0},…,P_{n}}$ contains whole transformations of camera w.r.t. the initial coordinate frame at k=0, according to previous step 2.</p>
 <p>In all, the <strong><em>main task</em></strong> in Visual Odometry is to compute the relative transformations $T<em>{k}$ from images $I</em>{k}$ and $I<em>{k-1}$, then to recover full trajectory $P</em>{0:n}$ for camera by $T_{k}$.</p>
 <h5 id="Camera-Modeling-and-Calibration"><a href="#Camera-Modeling-and-Calibration" class="headerlink" title="Camera Modeling and Calibration"></a>Camera Modeling and Calibration</h5><p>​    This section is always based on another research field named Structure from Motion, a traditional approach to 3D Reconstruction. 未完待续…</p>
 <h5 id="Motion-Estimation-Pose"><a href="#Motion-Estimation-Pose" class="headerlink" title="Motion Estimation (Pose)"></a>Motion Estimation (Pose)</h5><p>​    This module is the key point and core computation step in a VO system. We will compute camera motion $T_{k}$ between the previous and current image according formula (2), then by concatenation of all these single movements, the full trajectory of the camera can be recovered. That is our aim ! Like Figure2 , </p>
-<p><img src="/home/stvilla/图片/Typora_Images/Figure2.png" alt="Figure2"></p>
 <p>​                                            Figure 2</p>
-<p>​    To compute camera motion, there are two method to recover relative motion $T_{k}$. <em>Appearance-based method</em> or <em>Feature-based method</em> . <strong>Appearance-based</strong> method always use the intensity information of all pixels in the two input images, therefore we get more direct information from orignal image, this can reveal the relationship between two images in low level. However, it causes a more expensive computation. <strong>Feature-based</strong> method only use salient and visual features extracted (or tracked) across the imges, we must detect and match (track) same features between consecutive frames, then to compute relative poses.  </p>
+<p>​    To compute camera motion, there are two method to recover relative motion $T_{k}​$. <em>Appearance-based method</em> or <em>Feature-based method</em> . <strong>Appearance-based</strong> method always use the intensity information of all pixels in the two input images, therefore we get more direct information from orignal image, this can reveal the relationship between two images in low level. However, it causes a more expensive computation. <strong>Feature-based</strong> method only use salient and visual features extracted (or tracked) across the imges, we must detect and match (track) same features between consecutive frames, then to compute relative poses.  </p>
 <p>​    Feature-based motion estimation must robustly detect large number of feature points, some traditional computer vision methods can address this problem, like SIFT, SURF, ORB, FAST, these can be implemented by OpenCV. We want to compute relative transformation between two frames, it is neccessary to match features in both images. There are three cases: 2D-to-2D, 3D-to-3D, 3D-to-2D. </p>
+<p>​    SVO</p>
 
       
     </div>
@@ -483,7 +479,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -496,7 +492,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>

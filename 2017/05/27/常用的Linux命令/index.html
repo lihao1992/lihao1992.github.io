@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="常用的LINUX命令 常用的Linux命令  最近基于课题需要，搞起了深度学习，那么自然离不开Linux，下面是一些常用的命令，有一些是之前常用的，有一些不是很熟悉，所以记录下来。同时也是因为之前面试的时候，被问到了Linux一些命令操作，感觉还是很有必要记一下的，当然了如果你是Linux大神，平常命令行敲得飞起，vim指令玩儿的像magic一样，完全可以忽略（比如我们组的小闾同学—Linux程序">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的Linux命令">
+<meta property="og:url" content="http://yoursite.com/2017/05/27/常用的Linux命令/index.html">
+<meta property="og:site_name" content="Stvilla">
+<meta property="og:description" content="常用的LINUX命令 常用的Linux命令  最近基于课题需要，搞起了深度学习，那么自然离不开Linux，下面是一些常用的命令，有一些是之前常用的，有一些不是很熟悉，所以记录下来。同时也是因为之前面试的时候，被问到了Linux一些命令操作，感觉还是很有必要记一下的，当然了如果你是Linux大神，平常命令行敲得飞起，vim指令玩儿的像magic一样，完全可以忽略（比如我们组的小闾同学—Linux程序">
+<meta property="og:updated_time" content="2017-05-27T08:11:18.282Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用的Linux命令">
+<meta name="twitter:description" content="常用的LINUX命令 常用的Linux命令  最近基于课题需要，搞起了深度学习，那么自然离不开Linux，下面是一些常用的命令，有一些是之前常用的，有一些不是很熟悉，所以记录下来。同时也是因为之前面试的时候，被问到了Linux一些命令操作，感觉还是很有必要记一下的，当然了如果你是Linux大神，平常命令行敲得飞起，vim指令玩儿的像magic一样，完全可以忽略（比如我们组的小闾同学—Linux程序">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/27/常用的Linux命令/"/>
+
+
+
+
+
+  <title>常用的Linux命令 | Stvilla</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Stvilla</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/27/常用的Linux命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LIHAO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stvilla">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用的Linux命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-27T16:08:54+08:00">
+                2017-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="常用的LINUX命令"><a href="#常用的LINUX命令" class="headerlink" title="常用的LINUX命令"></a>常用的LINUX命令</h3><ul>
+<li>常用的Linux命令</li>
+</ul>
+<p>最近基于课题需要，搞起了深度学习，那么自然离不开Linux，下面是一些常用的命令，有一些是之前常用的，有一些不是很熟悉，所以记录下来。同时也是因为之前面试的时候，被问到了Linux一些命令操作，感觉还是很有必要记一下的，当然了如果你是Linux大神，平常命令行敲得飞起，vim指令玩儿的像magic一样，完全可以忽略（比如我们组的小闾同学—Linux程序员）。这篇也借鉴了组里另外一枚大神（张老师的博客）的总结～</p>
+<a id="more"></a>
+<h3 id="命令-1：mkdir"><a href="#命令-1：mkdir" class="headerlink" title="命令 1：mkdir"></a>命令 1：mkdir</h3><p>用途：创建目录<br>实例 1：mkdir do<br>含义：在当前目录下创建名为 do 的子目录<br>实例 2：mkdir do/align<br>含义：在子目录 do 下创建名为 align 的子目录（子目录 do 已经存在）<br>实例 3：mkdir –p hba/tree<br>含义：在当前目录下创建名为 hba 的子目录，并在子目录 hba 下创建名为 tree 的子目录</p>
+<h3 id="命令-2：rmdir"><a href="#命令-2：rmdir" class="headerlink" title="命令 2：rmdir"></a>命令 2：rmdir</h3><p>用途：删除目录<br>实例 1：rmdir tmp<br>含义：删除当前目录下名为 tmp 的子目录，该子目录中没有文件和子目录</p>
+<h3 id="命令-3：cd"><a href="#命令-3：cd" class="headerlink" title="命令 3：cd"></a>命令 3：cd</h3><p>用途：改变目录<br>实例 1：cd<br>含义：回到用户主目录，即登录时进入的目录<br>实例 2：cd do<br>含义：进入子目录 do<br>实例 3：cd ..<br>含义：回到上级目录<br>实例 4：cd hba/tree<br>含义：直接进入子目录 hba 下的 tree 子目录<br>实例 5：cd ../do/align<br>含义：进入上级目录 do 下的 align 子目录</p>
+<h3 id="命令-4：ls"><a href="#命令-4：ls" class="headerlink" title="命令 4：ls"></a>命令 4：ls</h3><p>用途：显示文件或目录<br>实例 1：ls<br>含义：显示当前目录下子目录和文件名<br>实例 2：ls -l<br>含义：显示当前目录下子目录和文件名详细信息，包括属性、权限、大小和创建日期等<br>实例 3：ls <em>.fasta含义：显示当前目录下所有以.fasta 结尾的文件实例 4：ls hba/hba_</em><br>含义：显示子目录 hba 下所有以 hba_起始的文件<br>实例 5：ls /tmp<br>含义：显示/tmp 目录所有子目录和文件<br>实例 6：ls –lR<br>含义：逐级显示当前目录及子目录下所有子目录和文件</p>
+<h3 id="命令-5：cat"><a href="#命令-5：cat" class="headerlink" title="命令 5：cat"></a>命令 5：cat</h3><p>用途：显示或编辑文本文件<br>实例 1：cat &gt; cat1<br>含义：往 cat1 中逐行输入文本，用 Ctrl-D 结束输入<br>实例 2：cat &gt;&gt; cat1<br>含义：往 cat1 中逐行追加文本，用 Ctrl-D 结束输入<br>实例 3：cat cat1<br>含义：显示文本文件 cat1 中的内容</p>
+<h3 id="命令-6：less"><a href="#命令-6：less" class="headerlink" title="命令 6：less"></a>命令 6：less</h3><p>用途：显示文件内容<br>实例 1：less 209hba.list<br>含义：逐屏显示文件 209hba.list 内容，回车进一行，空格进一页，q 终止显示</p>
+<h3 id="命令-7：cp"><a href="#命令-7：cp" class="headerlink" title="命令 7：cp"></a>命令 7：cp</h3><p>用途：复制文件<br>实例 1：cp seq1 seq2<br>含义：将文件 seq1 复制到文件 seq2 中，保留 seq1<br>实例 2：cp *.fasta ../keep/<br>含义：将所有文件名以.fasta 结尾的文件复制到上级目录的 keep 子目录中<br>实例 3：cp ../seq/hba_human.sw .<br>含义：将上级目录的 seq 子目录中名为 hba_human.sw 的文件复制到当前目录中<br>实例 4：cp /tmp/tf/zmtf-pep.fasta blast/<br>含义：将/tmp 目录中 tf 子目录中名为 zmtf-pep.fasta 的文件复制到当前目录中名为blast 的子目录中</p>
+<h3 id="命令-8：mv"><a href="#命令-8：mv" class="headerlink" title="命令 8：mv"></a>命令 8：mv</h3><p>用途：更改文件名</p>
+<p>-r参数 表示修改的是文件夹</p>
+<p>实例 1：mv seq1 seq2<br>含义：将文件 seq1 改名为 seq2，不保留 seq1<br>实例 2：mv hba_human.fasta pku08s1/hba<br>含义：将当前目录下文件 hba_human.fasta 移到子目录 pku08s1 下的子目录<br>hba 中</p>
+<h3 id="命令-9：rm"><a href="#命令-9：rm" class="headerlink" title="命令 9：rm"></a>命令 9：rm</h3><p>用途：删除文件或目录</p>
+<p>-r参数 表示删除的是文件夹</p>
+<p>实例 1：rm seq2<br>含义：删除文件 seq2<br>实例 2：rm <em>.txt含义：删除所有以.txt 结尾的文件实例 3：rm –r temp/</em><br>含义：删除子目录 temp 下所有子目录和文件，保留该目录<br>实例 4：rm –r temp<br>含义：删除子目录 temp 和该目录下所有子目录和文件</p>
+<h3 id="命令-10：chmod"><a href="#命令-10：chmod" class="headerlink" title="命令 10：chmod"></a>命令 10：chmod</h3><p>用途：改变文件或目录权限<br>实例 1：chmod –w ppf1.fas<br>含义：取消所有用户对 ppf1.fas 的写权限<br>实例 2：chmod +w seq1<br>含义：将当前目录下 seq1 设置为本用户可写，其他用户权限不变<br>实例 3：chmod -w keep/<br>含义：取消子目录 keep 写权限，不能在该目录下创建和删除文件或子目录<br>实例 4：chmod 755 bin/*<br>含义：将子目录 bin 下所有文件设置为本用户可读可写可执行，其它用户可读可执行</p>
+<h3 id="命令11-grep"><a href="#命令11-grep" class="headerlink" title="命令11: grep"></a>命令11: grep</h3><p>该命令常用于分析一行的信息，若当中有我们所需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于对一些命令的输出进行筛选加工等，其实就是一个正则表达式工具。</p>
+<p>grep一般会和其他命令结合使用，比如ps或者cat。</p>
+<p>比如查看一个文件中，是否包含某个单词</p>
+<p>cat test.cpp | grep Hello</p>
+<p>|通过通道的形式，使得grep可以检索前面的内容。</p>
+<p>或者</p>
+<p>grep Hello test.cpp</p>
+<h3 id="命令12-history"><a href="#命令12-history" class="headerlink" title="命令12: history"></a>命令12: history</h3><p>列出最近使用的命令。</p>
+<h3 id="命令13-jobs"><a href="#命令13-jobs" class="headerlink" title="命令13: jobs"></a>命令13: jobs</h3><p>查看当前有多少在后台运行的命令，需要配合&amp;使用。</p>
+<h3 id="命令14-find"><a href="#命令14-find" class="headerlink" title="命令14: find"></a>命令14: find</h3><p>很强大的命令，用于查找。</p>
+<h3 id="命令15-ps"><a href="#命令15-ps" class="headerlink" title="命令15: ps"></a>命令15: ps</h3><p>将某个时间点下的进程运行情况选取下来并输出，可以和grep结合使用。</p>
+<p>ps aux | grep python</p>
+<h3 id="命令16-kill"><a href="#命令16-kill" class="headerlink" title="命令16: kill"></a>命令16: kill</h3><p>向某个job或者进程发送一个signal。</p>
+<h3 id="命令17-killall"><a href="#命令17-killall" class="headerlink" title="命令17: killall"></a>命令17: killall</h3><p>向一个命令启动的进程发送一个信号。</p>
+<h3 id="命令18：man"><a href="#命令18：man" class="headerlink" title="命令18：man"></a>命令18：man</h3><p>man + 某个命令，可以查看这个命令所有的参数，可以根据需要添加命令参数</p>
+<p>比如上面的ps，如果你不知道加什么参数的话，就 man ps 查看所有参数</p>
+<h3 id="命令19-amp"><a href="#命令19-amp" class="headerlink" title="命令19: &amp;"></a>命令19: &amp;</h3><p>让进程在后台运行，放到命令的最后。</p>
+<h3 id="命令20-ctrl-z"><a href="#命令20-ctrl-z" class="headerlink" title="命令20: ctrl+z"></a>命令20: ctrl+z</h3><p>ctrl+z可以将一个正在前台执行的命令放到后台，并且暂停。</p>
+<h3 id="命令21-fg"><a href="#命令21-fg" class="headerlink" title="命令21: fg"></a>命令21: fg</h3><p>fg将后台中的命令调至前台继续运行。</p>
+<h3 id="命令22-bg"><a href="#命令22-bg" class="headerlink" title="命令22: bg"></a>命令22: bg</h3><p>bg将一个在后台暂停的进程，变成继续执行。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>比如，我写了一个小程序main.py：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for i in xrange(100000000):</div><div class="line">    j = i</div></pre></td></tr></table></figure>
+<p>通过调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python main.py</div></pre></td></tr></table></figure>
+<p>我们可以通过前台进程的方式执行。</p>
+<p>但是有时，我们希望它以后台的方式执行，等它运行结束后，再去看它的结果。</p>
+<p>1、可以通过ctrl+z的方式，将其转为后台执行，但是此时进程变为stopped，需要使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bg i</div></pre></td></tr></table></figure>
+<p>改为运行状态，这里的i是命令编号（jobs -l 第一个显示的内容），不是进程号。</p>
+<p>2、可以通过使用命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python main.py &amp;</div></pre></td></tr></table></figure>
+<p>使得程序以后台的形式运行。</p>
+<p>为了查看当前后台程序，我们使用以下命令查看，这样的话，我们可以看到pid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jobs -l</div></pre></td></tr></table></figure>
+<p>随后想要停止该程序的话，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">kill pid</div></pre></td></tr></table></figure>
+<p>想把该后台程序，转为前台执行，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fg i</div></pre></td></tr></table></figure>
+<p>i仍然是命令编号，不是进程号。</p>
+<p>有的时候，我们程序里有stdin和stdout，这时，即使把它们转为后台进程，仍然会在终端上输出，造成不便，这时我们需要把这些输出内容重定向到一个文件里，这样就可以继续在清爽的终端上做其他任务了。</p>
+<p>比如，我写了如下程序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for i in xrange(10000000000):</div><div class="line">    print i</div></pre></td></tr></table></figure>
+<p>直接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python main.py &amp;</div></pre></td></tr></table></figure>
+<p>仍然会在终端输出大量命令。可以这样输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python main.py &gt;&gt; test.txt &amp;</div></pre></td></tr></table></figure>
+<p>这样的话，就不会在终端看到输出了，所有的输出都进入到了test.txt这个文件里。</p>
+<p>这样的话，即使你暂时离开ssh，推出服务器，你的程序仍然能在后台运行。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/18/图像的高斯模糊/" rel="next" title="图像的高斯模糊">
+                <i class="fa fa-chevron-left"></i> 图像的高斯模糊
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="LIHAO" />
+          <p class="site-author-name" itemprop="name">LIHAO</p>
+           
+              <p class="site-description motion-element" itemprop="description">Life is Beautiful</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的LINUX命令"><span class="nav-number">1.</span> <span class="nav-text">常用的LINUX命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-1：mkdir"><span class="nav-number">2.</span> <span class="nav-text">命令 1：mkdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-2：rmdir"><span class="nav-number">3.</span> <span class="nav-text">命令 2：rmdir</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-3：cd"><span class="nav-number">4.</span> <span class="nav-text">命令 3：cd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-4：ls"><span class="nav-number">5.</span> <span class="nav-text">命令 4：ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-5：cat"><span class="nav-number">6.</span> <span class="nav-text">命令 5：cat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-6：less"><span class="nav-number">7.</span> <span class="nav-text">命令 6：less</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-7：cp"><span class="nav-number">8.</span> <span class="nav-text">命令 7：cp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-8：mv"><span class="nav-number">9.</span> <span class="nav-text">命令 8：mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-9：rm"><span class="nav-number">10.</span> <span class="nav-text">命令 9：rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令-10：chmod"><span class="nav-number">11.</span> <span class="nav-text">命令 10：chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令11-grep"><span class="nav-number">12.</span> <span class="nav-text">命令11: grep</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令12-history"><span class="nav-number">13.</span> <span class="nav-text">命令12: history</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令13-jobs"><span class="nav-number">14.</span> <span class="nav-text">命令13: jobs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令14-find"><span class="nav-number">15.</span> <span class="nav-text">命令14: find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令15-ps"><span class="nav-number">16.</span> <span class="nav-text">命令15: ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令16-kill"><span class="nav-number">17.</span> <span class="nav-text">命令16: kill</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令17-killall"><span class="nav-number">18.</span> <span class="nav-text">命令17: killall</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令18：man"><span class="nav-number">19.</span> <span class="nav-text">命令18：man</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令19-amp"><span class="nav-number">20.</span> <span class="nav-text">命令19: &</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令20-ctrl-z"><span class="nav-number">21.</span> <span class="nav-text">命令20: ctrl+z</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令21-fg"><span class="nav-number">22.</span> <span class="nav-text">命令21: fg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命令22-bg"><span class="nav-number">23.</span> <span class="nav-text">命令22: bg</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">24.</span> <span class="nav-text">实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LIHAO</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
