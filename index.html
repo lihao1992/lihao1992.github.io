@@ -264,6 +264,125 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/05/Pytorch-函数——-view/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LIHAO">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stvilla">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/05/Pytorch-函数——-view/" itemprop="url">Pytorch 函数—— view()</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-05T08:51:07+08:00">
+                2017-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Pytorch-函数——-view"><a href="#Pytorch-函数——-view" class="headerlink" title="Pytorch 函数—— view()"></a>Pytorch 函数—— view()</h3><p>最近一直在用Pytorch，之前一直没有搞明白 view() 函数的使用方法，最近看了一篇教程，突然茅塞顿开，所以赶紧记录一下。</p>
+<p>view() 函数的作用简而言之，就是reshape一个张量，在构建DNN的时候，我们需要明确我们的输入是以一个什么样的维度放到网络中的，所以这时候就用到了.view()，或者说如下面这种情况，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch</div><div class="line">a = torch.range(<span class="number">1</span>,<span class="number">16</span>)</div></pre></td></tr></table></figure>
+<p>a是一个有16个元素的张量（tensor），如果你想reshape成一个4*4的tensor，那么就是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = a.view(<span class="number">4</span>,<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<p>需要注意的是，张量包含的元素总和应该在reshape前后保持一致 ！</p>
+<p>那如果.view()有一个参数为 -1，是什么意思呢？意思就是，当你只知道tensor的行/列/任一维度的数量时，让pytorch库自己去计算合适的维度去匹配你想要的情况。尤其是在构建DNN的时候，在forward函数里，在将参数从conv layer传到FC layer的时候，你需要重新reshape tensor.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a = a.view(<span class="number">16</span>*<span class="number">5</span>*<span class="number">5</span>,<span class="number">-1</span>)</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/27/常用的Linux命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -772,7 +891,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -785,7 +904,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               
             </div>
